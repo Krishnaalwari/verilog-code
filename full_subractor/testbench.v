@@ -5,10 +5,17 @@ module full__subractor__tb();
   wire borrow,diff;
   full_subractor dut (a,b,c,borrow,diff);
   initial begin
-    repeat (10) begin
-      $dumpfile ("dump.vcd");
-      $dumpvars;
-      {a,b,c}=$random;
+    $dumpfile ("dump.vcd");
+    $dumpvars(1,full__subractor__tb);
+    repeat (5)begin
+      a=1'b0; b=1'b0; c=1'b0;
+      a=1'b0; b=1'b0; c=1'b1;
+      a=1'b0; b=1'b1; c=1'b0;
+      a=1'b0; b=1'b1; c=1'b1;
+      a=1'b1; b=1'b0; c=1'b0;
+      a=1'b1; b=1'b0; c=1'b1;
+      a=1'b1; b=1'b1; c=1'b0;
+      a=1'b1; b=1'b1; c=1'b1;
       #100
       $display("$time=%0t,a=%b,b=%b,c=%b,output borrow=%b,diff=%b",$time,a,b,c,borrow,diff);
     end
