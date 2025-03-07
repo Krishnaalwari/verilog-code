@@ -7,17 +7,24 @@ module full__subractor__tb();
   initial begin
     $dumpfile ("dump.vcd");
     $dumpvars(1,full__subractor__tb);
-    repeat (5)begin
+    
+            $monitor("$time=%0t,a=%b,b=%b,c=%b,output borrow=%b,diff=%b",$time,a,b,c,borrow,diff);
       a=1'b0; b=1'b0; c=1'b0;
-      a=1'b0; b=1'b0; c=1'b1;
-      a=1'b0; b=1'b1; c=1'b0;
-      a=1'b0; b=1'b1; c=1'b1;
-      a=1'b1; b=1'b0; c=1'b0;
-      a=1'b1; b=1'b0; c=1'b1;
-      a=1'b1; b=1'b1; c=1'b0;
-      a=1'b1; b=1'b1; c=1'b1;
       #100
-      $display("$time=%0t,a=%b,b=%b,c=%b,output borrow=%b,diff=%b",$time,a,b,c,borrow,diff);
-    end
-  end
+      a=1'b0; b=1'b0; c=1'b1;
+      #100
+      a=1'b0; b=1'b1; c=1'b0;
+      #100
+      a=1'b0; b=1'b1; c=1'b1;
+      #100
+      a=1'b1; b=1'b0; c=1'b0;
+      #100
+      a=1'b1; b=1'b0; c=1'b1;
+      #100
+      a=1'b1; b=1'b1; c=1'b0;
+      #100
+      a=1'b1; b=1'b1; c=1'b1;
+      
+	end
+ 
 endmodule
